@@ -7,15 +7,12 @@ from scrapy.loader import ItemLoader
 class PowersportsSpider(scrapy.Spider):
     name = "powersports"
     allowed_domains = ["powersportscanada.com"]
-    # custom_settings = {
-    #     'ITEM_PIPELINES' : {
-    #         'scraper.pipelines.ApexCyclePipeline' : 300,
-    #     }
-    # }
+    
 
     def start_requests(self):
         url = 'https://www.powersportscanada.com/--inventory?category=motorcycle%20%2F%20scooter&pg=1&sz=50'
         yield scrapy.Request(url, callback=self.parse)
+
 
     def parse(self, response):
         # Getting the first result list only (to exclude irrelevant recommendation)
