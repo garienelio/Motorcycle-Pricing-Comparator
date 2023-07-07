@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a1d1f;
+  /* background-color: #ededed; */
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.header {
+  display: flex;
+  height: 100px;
+  background-color: #101315;
+  /* background-color: #fcfcfc; */
+  align-items: center;
+  /* color: #121326; */
+  color: whitesmoke;
+  font-weight: bolder;
+}
+
+.header-motorcycle{
+  height: 80%;
+  padding: 0px 15px;
+}
+
+.searchContainer{
+  display: flex;
+  margin-top: 35px;
+  justify-content: center;
+  /* background-color: wheat; */
+}
+
+.searchBar{
+  display: flex;
+  width: 600px;
+  height: 45px;
+  /* background-color: #fcfcfc; */
+  background-color: #101315;
+  border-radius: 35px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font: inherit;
+
+}
+
+.searchImg{
+  margin-left: 2%;
+  height: 50%;
+}
+
+.searchInput{
+  flex: 1;
+  background-color: transparent;
+  border-radius: 0 35px 35px 0;
+  padding: 11px;
+  border: none;
+  font-size: 18px;
+  color: #b4b5b5;
+}
+
+.searchInput:focus{
+  outline: none;
+}
+
+@media screen and (max-width: 790px) {
+  .searchBar {
+    width: 75%;
+  }
+}
+
+.itemContainer{
+  /* margin-top: 35px; */
+  margin: 35px 65px 35px 65px;
+  /* background-color: aqua; */
+  display: grid;
+  flex-wrap: wrap;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.itemBox{
+  /* background-color: #fcfcfc; */
+  background-color: #101315;
+  border-radius: 8px;
+  height: fit-content;
+  color: #b4b5b5;
+}
+
+.loadMore{
+  margin: 0 auto 35px;
+  display: block;
+  border: none;
+  border-radius:8px;
+  padding:13px;
+  width: 180px;
+  font-weight : 600;
+  font-size: 1.1rem;
+  background-color: #101315;
+  color: #b4b5b5;
+}
+
+.loadMore:hover{
+  background-color: aqua;
+  color: black;
+  transition-duration: 0.25s;
+  cursor: pointer;
+}
+
+.itemData{
+  margin: 15px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.itemData h4{
+  font-weight: 400;
+}
+
+.itemData span{
+  font-weight: 600;
+}
+
+.itemData .price{
+  font-weight: 700;
+}
+
+.itemButtons{
+  display: flex;
+  justify-content: center;
+  /* background-color: bisque; */
+  margin-bottom: 20px;
+}
+
+.Button{
+  font-family: 'Manrope', sans-serif;
+}
+
