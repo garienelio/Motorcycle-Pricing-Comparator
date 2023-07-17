@@ -5,11 +5,27 @@ import Listings from './pages/Listings.jsx';
 import Favorites from './pages/Favorites.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ComparisonContextProvider } from './context/ComparisonContext.jsx';
-import { BookmarkContextProvider } from './context/BookmarkContext.jsx';
+import { FavoriteContextProvider } from './context/FavoriteContext.jsx';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './App.css';
 
 function App() {
   // const [count, setCount] = useState(0)
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#b4b5b5'
+      }
+    },
+    typography: {
+      button: {
+        textTransform: 'none',
+        fontWeight: 600
+      },
+      fontFamily: 'Manrope',
+    },
+  });
 
   return (
     // <>
@@ -36,14 +52,16 @@ function App() {
     // </>
 
     <ComparisonContextProvider>
-      <BookmarkContextProvider>
+      <FavoriteContextProvider>
+      <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
-            <Route path="/listings" element={<Listings />}/>
+            <Route path="/listings" element={<Listings/>}/>
             <Route path="/favorites" element={<Favorites/>}/>
           </Routes>
         </BrowserRouter>
-      </BookmarkContextProvider>
+      </ThemeProvider>
+      </FavoriteContextProvider>
     </ComparisonContextProvider>
   )
 }

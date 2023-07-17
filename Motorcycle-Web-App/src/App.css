@@ -52,6 +52,14 @@ a{
   overflow: hidden;
   font: inherit;
 
+  @media screen and (max-width: 790px) {
+    width: 75%;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 90%;
+  }
+
 }
 
 .searchImg{
@@ -73,19 +81,12 @@ a{
   outline: none;
 }
 
-@media screen and (max-width: 790px) {
-  .searchBar {
-    width: 75%;
-  }
-}
-
 .itemContainer{
   /* margin-top: 35px; */
   margin: 35px 65px 35px 65px;
   /* background-color: aqua; */
   display: grid;
-  flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
   grid-template-columns: repeat(3, 1fr);
 
   @media (max-width: 1000px) {
@@ -94,6 +95,10 @@ a{
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+  }
+
+  @media screen and (max-width: 550px) {
+    margin: 35px 20px 35px 20px;
   }
 }
 
@@ -128,7 +133,15 @@ a{
 .itemData{
   margin: 15px;
   line-height: 1.5;
+  /* background-color: aquamarine; */
+}
+
+.itemBox > .itemData{
   cursor: pointer;
+}
+
+.itemData h1{
+  font-size: 1.5rem;
 }
 
 .itemData h4{
@@ -150,7 +163,76 @@ a{
   margin-bottom: 20px;
 }
 
-.Button{
-  font-family: 'Manrope', sans-serif;
+.fabContainer{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  @media (max-width: 610px) {
+    bottom: 100px;
+  }
 }
 
+.favItemContainer{
+  /* background-color: beige; */
+  margin: 35px 12% 35px 12%;
+
+  @media (max-width: 768px) {
+    margin: 35px 5% 35px 5%;
+  }
+}
+
+.favItemBox{
+  background-color: #101315;
+  border-radius: 8px;
+  color: #b4b5b5;
+  margin-bottom: 25px;
+  height: fit-content;
+  overflow: hidden;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.favItemBox h4{
+  font-size: 1.1rem;
+}
+
+.deleteIconBtn{
+  margin-right: 25px;
+  @media (max-width: 768px) {
+    margin-right: 5px;
+  }
+}
+
+.modalBox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  background-color: #101315;
+  border-radius: 8px;
+}
+
+.modalContent{
+  margin: 15px;
+  color: #b4b5b5;
+}
+
+.modalContent > h2{
+  margin-bottom: 8px;
+}
+
+.modalContent > h3{
+  font-weight: 400;
+  margin-bottom: 15px;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.modalBtn{
+  margin-top: 20px;
+}

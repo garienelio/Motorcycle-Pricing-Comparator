@@ -5,8 +5,6 @@ import Header from '../components/Header.jsx';
 import Searchbar from "../components/Searchbar.jsx";
 import Item from '../components/Item.jsx';
 import { Fab } from '@mui/material';
-import { Badge } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ComparisonContext } from "../context/ComparisonContext.jsx";
 import { SnackbarProvider } from 'notistack';
 
@@ -46,35 +44,11 @@ export default function Listings(){
       e.currentTarget.disabled = false;
     }
 
-    const theme = createTheme({
-      palette: {
-        primary: {
-          main: '#b4b5b5'
-        }
-      },
-      typography: {
-        button: {
-          textTransform: 'none',
-          fontWeight: 600
-        },
-        fontFamily: 'Manrope',
-      },
-    });
-
-    const fabStyle = {
-      position: 'fixed',
-      bottom: '30px',
-      right: '30px'
-    }
-
     return(
         <>
-        <ThemeProvider theme={theme}>
         <SnackbarProvider maxSnack={3}>
-          {compareItems.length > 0 && <Fab sx={fabStyle} variant="extended" size="large">Compare Products ({compareItems.length})</Fab>}
-          {/* <Fab sx={fabStyle} variant="extended" size="large">Compare Products</Fab> */}
           <Header name="Motorcycle Listings"/>
-          <Searchbar keyword={keyword} setKeyword={setKeyword} setPage={setPage}/>
+          <Searchbar keyword={keyword} setKeyword={setKeyword} setPage={setPage} placeholder="Search Motorcycle"/>
           {/* <h1>{keyword}</h1> */}
           <div className="itemsContainer">
             <div className="itemContainer"> 
@@ -84,8 +58,10 @@ export default function Listings(){
             </div>
             {moreData && <button className="loadMore" onClick={handleLoadMore}>Load More</button>}
           </div>
+          <div className="fabContainer">
+            {compareItems.length > 0 && <Fab variant="extended" size="large">Compare Products ({compareItems.length})</Fab>}
+          </div>
         </SnackbarProvider>
-        </ThemeProvider>
         </>
     );
 }

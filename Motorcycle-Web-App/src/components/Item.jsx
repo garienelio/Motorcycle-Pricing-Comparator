@@ -1,30 +1,30 @@
 import React, { useContext } from "react";
 import { ComparisonContext } from "../context/ComparisonContext";
-import { BookmarkContext } from "../context/BookmarkContext";
+import { FavoriteContext } from "../context/FavoriteContext";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Stack from '@mui/material/Stack';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Tooltip } from '@mui/material';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import { useSnackbar } from 'notistack';
+import { IconButton } from '@mui/material';
 
 
 export default function Item({product}){
     const { compareItems , addToCompare, removeFromCompare } = useContext(ComparisonContext);
-    const { bookmarkItems, addBookmark, removeBookmark } = useContext(BookmarkContext);
+    const { favoriteItems, addFavorite, removeFavorite } = useContext(FavoriteContext);
     const { enqueueSnackbar } = useSnackbar();
 
     const handleAddFavorite = (item) => {
-        addBookmark(item);
-        enqueueSnackbar('Added to Favorite.', {variant: 'success', autoHideDuration: 1800});
+        addFavorite(item);
+        enqueueSnackbar('Added to Favorite', {variant: 'success', autoHideDuration: 1800});
     }
 
     const handleRemoveFavorite = (id) => {
-        removeBookmark(id)
-        enqueueSnackbar('Removed from Favorite.', {variant: 'error', autoHideDuration: 1800});
+        removeFavorite(id)
+        enqueueSnackbar('Removed from Favorite', {variant: 'success', autoHideDuration: 1800});
     }
 
     return(
@@ -44,9 +44,13 @@ export default function Item({product}){
                 <Button color="success" size="small" variant="contained" startIcon={<CheckIcon/>} onClick={() => removeFromCompare(product.ID)}>Compare</Button> : 
                 <Button size="small" variant="outlined" startIcon={<AddIcon/>} onClick={() => addToCompare(product)}>Compare</Button>}
                 <Tooltip title="Add to Favorite" placement="bottom">
-                  {bookmarkItems.some((item) => item.ID === product.ID) ? 
-                  <FavoriteIcon style={{fontSize: '30px'}} onClick={() => handleRemoveFavorite(product.ID)}/> : 
-                  <FavoriteBorderIcon style={{fontSize: '30px'}} onClick={() => handleAddFavorite(product)}/>}
+                    {favoriteItems.some((item) => item.ID === product.ID) ?
+                    <IconButton color="inherit" onClick={() => handleRemoveFavorite(product.ID)}>
+                      <FavoriteIcon style={{fontSize: '30px'}}/>
+                    </IconButton> : 
+                    <IconButton color="inherit" onClick={() => handleAddFavorite(product)}>
+                      <FavoriteBorderIcon style={{fontSize: '30px'}}/>
+                    </IconButton>}
                 </Tooltip>
               </Stack>
           </div>
